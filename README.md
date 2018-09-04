@@ -17,6 +17,7 @@ message protocol to send and receive messages.
 
 Run the following commands to configure and deploy the applications.
 
+
 ### Deployment using S2I
 
 ```bash
