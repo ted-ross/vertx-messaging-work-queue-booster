@@ -105,7 +105,7 @@ public class Frontend extends AbstractVerticle {
   }
 
   private void sendRequests(ProtonConnection conn) {
-    requestSender = conn.createSender("work-queue/requests");
+    requestSender = conn.createSender("work-requests");
 
     // Using a null address and setting the source dynamic tells
     // the remote peer to generate the reply address.
@@ -156,7 +156,7 @@ public class Frontend extends AbstractVerticle {
   }
 
   private void receiveWorkerUpdates(ProtonConnection conn) {
-    ProtonReceiver receiver = conn.createReceiver("work-queue/worker-updates");
+    ProtonReceiver receiver = conn.createReceiver("worker-updates");
 
     receiver.handler((delivery, message) -> {
       Map props = message.getApplicationProperties().getValue();
@@ -184,7 +184,7 @@ public class Frontend extends AbstractVerticle {
 
     Message message = Message.Factory.create();
     message.setMessageId(requestId);
-    message.setAddress("work-queue/requests");
+    message.setAddress("work-requests");
     message.setBody(new AmqpValue(request.getText()));
     message.setApplicationProperties(new ApplicationProperties(props));
 
