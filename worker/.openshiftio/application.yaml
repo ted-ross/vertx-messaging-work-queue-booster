@@ -128,10 +128,6 @@ objects:
       spec:
         containers:
         - env:
-          - name: MESSAGING_SERVICE_HOST
-            value: work-queue-broker-amq-amqp
-          - name: MESSAGING_SERVICE_PORT
-            value: "5672"
           - name: KUBERNETES_NAMESPACE
             valueFrom:
               fieldRef:

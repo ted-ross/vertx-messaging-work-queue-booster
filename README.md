@@ -34,14 +34,14 @@ oc new-app --template=amq-broker-71-basic \
 oc apply -f ./frontend/.openshiftio/application.yaml
 
 oc new-app --template=vertx-messaging-frontend \
-  -p SOURCE_REPOSITORY_URL=https://github.com/openshiftio-vertx-boosters/vertx-messaging-work-queue-booster \
+  -p SOURCE_REPOSITORY_URL=https://github.com/ted-ross/vertx-messaging-work-queue-booster \
   -p SOURCE_REPOSITORY_REF=master \
   -p SOURCE_REPOSITORY_DIR=frontend  
 
 oc apply -f ./worker/.openshiftio/application.yaml
 
 oc new-app --template=vertx-messaging-worker \
-  -p SOURCE_REPOSITORY_URL=https://github.com/openshiftio-vertx-boosters/vertx-messaging-work-queue-booster \
+  -p SOURCE_REPOSITORY_URL=https://github.com/ted-ross/vertx-messaging-work-queue-booster \
   -p SOURCE_REPOSITORY_REF=master \
   -p SOURCE_REPOSITORY_DIR=worker
 ```

@@ -77,7 +77,7 @@ public class Worker extends AbstractVerticle {
     // destination using the "to" property of the message.
     ProtonSender sender = conn.createSender(null);
 
-    ProtonReceiver receiver = conn.createReceiver("work-queue/requests");
+    ProtonReceiver receiver = conn.createReceiver("work-requests");
 
     receiver.handler((delivery, request) -> {
       LOGGER.info("{0}: Receiving request {1}", ID, request);
@@ -129,7 +129,7 @@ public class Worker extends AbstractVerticle {
   }
 
   private void sendUpdates(ProtonConnection conn) {
-    ProtonSender sender = conn.createSender("work-queue/worker-updates");
+    ProtonSender sender = conn.createSender("worker-updates");
 
     vertx.setPeriodic(5000, timer -> {
       if (conn.isDisconnected()) {
